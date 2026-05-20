@@ -1,0 +1,31 @@
+/* Aggressively reduce logo size using transform */
+img[src*="hotel-logo"] {
+    transform: scale(0.3) !important;
+    transform-origin: top left !important;
+}
+
+/* Reduce login page logo */
+.login {
+    --logo-height: 60px !important;
+}
+
+.login__logo {
+    height: 60px !important;
+    width: 60px !important;
+}
+
+.login__logo img,
+.login img {
+    max-width: 60px !important;
+    width: 60px !important;
+    height: 60px !important;
+    object-fit: contain !important;
+}
+
+/* Override inline styles */
+[style*="logo"] img {
+    max-width: 60px !important;
+    height: auto !important;
+}
+
+
