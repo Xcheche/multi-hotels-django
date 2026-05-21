@@ -17,12 +17,20 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
-from django.urls import include, path, re_path
+from django.urls import include, path
 from django.views.static import serve
+from django.conf.urls.static import static
+from config.settings.base import MEDIA_ROOT, MEDIA_URL
+
+from config.settings.base import MEDIA_ROOT
 
 urlpatterns = [
     path("i18n/", include("django.conf.urls.i18n")),
     path("admin/", admin.site.urls),
-    path("", serve, {"document_root": settings.BASE_DIR / "travelix-master-src-code", "path": "index.html"}),
-    re_path(r"^(?P<path>.*)$", serve, {"document_root": settings.BASE_DIR / "travelix-master-src-code"}),
+    path("auth/", include("user_auth.urls", namespace="user_auth")),
+    path("", include("hotel.urls", namespace="hotel")),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

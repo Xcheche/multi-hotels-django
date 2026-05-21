@@ -410,17 +410,6 @@ section
 {
 	margin-right: 15px;
 }
-.user_box_login::after
-{
-	display: block;
-	position: absolute;
-	top: 15px;
-	right: -9px;
-	background: #FFFFFF;
-	width: 1px;
-	height: 9px;
-	content: '';
-}
 .main_nav_col
 {
 	height: 143px;
